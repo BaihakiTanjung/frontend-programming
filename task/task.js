@@ -6,7 +6,7 @@
  */
 const users = [
   {
-    name: "Nurul",
+    name: "Baihaki",
     age: 20,
     major: "Informatics",
   },

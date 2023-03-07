@@ -4,7 +4,33 @@
  * Object memiliki property: name, age, major.
  * Note: Ubah var menggunakan JavaScript Modern.
  */
-var users;
+const users = [
+  {
+    name: "Nurul",
+    age: 20,
+    major: "Informatics",
+  },
+  {
+    name: "Isfa",
+    age: 20,
+    major: "Informatics",
+  },
+  {
+    name: "Rizky",
+    age: 20,
+    major: "Informatics",
+  },
+  {
+    name: "Rizal",
+    age: 20,
+    major: "Informatics",
+  },
+  {
+    name: "Rizki",
+    age: 20,
+    major: "Informatics",
+  },
+];
 
 /**
  * TODO 2

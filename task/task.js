@@ -38,7 +38,11 @@ const users = [
  * Hint: Gunakan for/for-of.
  * Note: Ubah function menggunakan arrow function.
  */
-function all() {}
+const all = () => {
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i]);
+  }
+};
 
 /**
  * TODO 3
@@ -46,7 +50,9 @@ function all() {}
  * Hint: Gunakan method push.
  * Note: Ubah function menggunakan arrow function.
  */
-function store(user) {}
+const store = (user) => {
+  users.push(user);
+};
 
 /**
  * TODO 4.
@@ -54,7 +60,9 @@ function store(user) {}
  * Hint: re-assign array.
  * Note: Ubah function menggunakan arrow function.
  */
-function update(index, user) {}
+const update = (index, user) => {
+  users[index] = user;
+}
 
 /**
  * TODO 5.
@@ -62,7 +70,9 @@ function update(index, user) {}
  * Hint: Gunakan method splice.
  * Note: Ubah function menggunakan arrow function.
  */
-function destroy(index) {}
+const destroy = (index) => {
+  users.splice(index, 1);
+}
 
 /**
  * Function main.

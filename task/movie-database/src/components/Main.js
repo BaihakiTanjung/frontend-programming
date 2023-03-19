@@ -1,10 +1,5 @@
-function Main() {
-    return (
-      <div>
-        <h1>Main</h1>
-      </div>
-    );
-  }
-  
-  export default Main;
-  
+const Main = () => {
+  return <div>Main</div>;
+};
+
+export default Main;

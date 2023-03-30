@@ -1,28 +1,37 @@
-// Import useSelector: untuk mengakses state redux
-import { useSelector } from "react-redux";
 import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
+import data from "../../utils/constants/data";
+import { useState } from "react";
+import { nanoid as na } from "nanoid";
 
-function Movies({ title }) {
-  /**
-   * Gunakan useSelector untuk mengakses state redux.
-   * Menerima parameter state (global state).
-   * Akses state movies: state global - nama reducer - nama state
-   */
-  const movies = useSelector((state) => state.movies.movies);
+function Movies() {
+  const [movies, setMovies] = useState(data);
+
+  const handleAddMovie = () => {
+    const newMovie = {
+      id: na,
+      title: "The Ice Age",
+      year: "2022",
+      type: "movie",
+      poster: "https://picsum.photos/300/400",
+    };
+
+    setMovies([...movies, newMovie]);
+  };
 
   return (
-    <div>
-      <div className={styles.container}>
-        <section className={styles.movies}>
-          <h2 className={styles.movies__title}>{title}</h2>
-          <div className={styles.movie__container}>
-            {movies.map((movie) => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </div>
-        </section>
-      </div>
+    <div className={styles.container}>
+      <section className={styles.movies}>
+        <h2 className={styles.movies__title}>Latest Movies</h2>
+        <div className={styles.movie__container}>
+          {movies.map((movie) => {
+            return (
+              <Movie key={movie.id} title={movie.title} year={movie.year} />
+            );
+          })}
+        </div>
+        <button onClick={handleAddMovie}>Add Movie</button>
+      </section>
     </div>
   );
 }

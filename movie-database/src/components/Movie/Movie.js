@@ -1,25 +1,18 @@
-import { Link } from "react-router-dom";
-import StyledMovie from "./Movie.styled";
+import styles from "./Movie.module.css";
 
-// Component Movie menerima props
 function Movie(props) {
-  // Melakukan destructing props
-  const { movie } = props;
+  const { title, year } = props;
 
   return (
-    <StyledMovie>
+    <div className={styles.movie}>
       <img
-        src={
-          movie.poster || `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
-        }
-        alt={movie.title}
+        className={styles.movie__image}
+        src="https://picsum.photos/300/400"
+        alt=""
       />
-      {/* Menambahkan Link ke Title */}
-      <Link to={`/movie/${movie.id}`}>
-        <h3>{movie.title}</h3>
-      </Link>
-      <p>{movie.year || movie.release_date}</p>
-    </StyledMovie>
+      <h3 className={styles.movie__title}>{title}</h3>
+      <p className={styles.movie__date}>{year}</p>
+    </div>
   );
 }
 

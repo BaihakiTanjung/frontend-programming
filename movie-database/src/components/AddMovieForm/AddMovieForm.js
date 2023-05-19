@@ -74,6 +74,29 @@ function AddMovieForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Validation
+    if (title === "") {
+      setIsTitleError(true);
+    } else if (date === "") {
+      setIsDateError(true);
+    } else if (poster === "") {
+      setIsPosterError(true);
+    } else {
+      setIsTitleError(false);
+      setIsDateError(false);
+      setIsPosterError(false);
+    }
+
+    const movie = {
+      id: nanoid(),
+      title: title,
+      year: date,
+      type: type,
+      poster: poster,
+    };
+
+    setMovies([...movies, movie]);
+
     validate() && addMovie();
   }
 

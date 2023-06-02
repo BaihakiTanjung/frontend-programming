@@ -6,19 +6,26 @@ import NowPlayingMovie from "./pages/movie/NowPlayingMovie";
 import TopRatedMovie from "./pages/movie/TopRatedMovie";
 import Layout from "./Layout";
 import Counter from "./components/Counter/Counter";
+import theme from "./utils/constants/theme";
+import GlobalStyle from "./components/GlobalStyle";
+
+import { ThemeProvider } from "styled-components";
 
 const App = () => {
   return (
     // <Counter />
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movie/create" element={<CreateMovie />} />
-        <Route path="/movie/popular" element={<PopularMovie />} />
-        <Route path="/movie/now-playing" element={<NowPlayingMovie />} />
-        <Route path="/movie/top" element={<TopRatedMovie />} />
-      </Routes>
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/create" element={<CreateMovie />} />
+          <Route path="/movie/popular" element={<PopularMovie />} />
+          <Route path="/movie/now-playing" element={<NowPlayingMovie />} />
+          <Route path="/movie/top" element={<TopRatedMovie />} />
+        </Routes>
+      </Layout>
+    </ThemeProvider>
   );
 };
 

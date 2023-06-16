@@ -1,7 +1,9 @@
+import PopularMovieComponent from "../../components/PopularMovie/PopularMovie";
+
 const PopularMovie = () => {
   return (
     <>
-      <h1>Popular Movies</h1>
+      <PopularMovieComponent />
     </>
   );
 };

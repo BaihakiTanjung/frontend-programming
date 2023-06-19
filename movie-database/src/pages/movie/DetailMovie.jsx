@@ -1,12 +1,16 @@
-import DetailMovieComponent from "../../components/DetailMovie/DetailMovie";
+import HeroDetail from "../../components/HeroDetail/HeroDetail";
+import Recommendation from "../../components/Recommendation/Recommendation";
+import { useParams } from "react-router-dom";
 
 const DetailMovie = () => {
-  return <DetailMovieComponent />;
-  //   return (
-  //     <div className="detail-movie">
-  //       <h2>Detail Movie</h2>
-  //     </div>
-  //   );
+  const { id } = useParams();
+
+  return (
+    <>
+      <HeroDetail movie_id={id} />
+      <Recommendation movie_id={id} />
+    </>
+  );
 };
 
 export default DetailMovie;

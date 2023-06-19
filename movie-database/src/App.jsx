@@ -14,7 +14,6 @@ import { ThemeProvider } from "styled-components";
 
 const App = () => {
   return (
-    // <Counter />
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Layout>

@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className={styles.footer}>
         <h4 className={styles.footer__title}>Movie App</h4>
         <p className={styles.footer__author}>
-          Copyright &copy; By Baihaki {new Date().getFullYear()}
+          Copyright &copy; By Baihaki Al Biruni {new Date().getFullYear()}
         </p>
       </footer>
     </div>

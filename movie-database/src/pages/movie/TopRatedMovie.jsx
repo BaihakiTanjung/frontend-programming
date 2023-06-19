@@ -1,7 +1,11 @@
+import TopRated from "../../components/TopRated/TopRated";
+import Hero from "../../components/Hero/Hero";
+
 const TopRatedMovie = () => {
   return (
     <>
-      <h1>Top Rated Movies</h1>
+      <Hero />
+      <TopRated />
     </>
   );
 };

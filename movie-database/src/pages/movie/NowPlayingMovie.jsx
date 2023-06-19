@@ -1,7 +1,11 @@
+import NowPlaying from "../../components/NowPlaying/NowPlaying";
+import Hero from "../../components/Hero/Hero";
+
 const NowPlayingMovie = () => {
   return (
     <>
-      <h1>Now Playing Movies</h1>
+      <Hero />
+      <NowPlaying />
     </>
   );
 };

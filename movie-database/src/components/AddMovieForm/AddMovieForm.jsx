@@ -3,8 +3,13 @@ import styles from "./AddMovieForm.module.css";
 import { nanoid } from "nanoid";
 import Alert from "../Alert/Alert";
 import Select from "../Select/Select";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMovies } from "../../features/moviesSlice";
 
 const AddMovieForm = ({ movies, setMovies }) => {
+  const dispatch = useDispatch();
+
   // Refactor state form & error input value
   const [formData, setFormData] = useState({
     title: "",
@@ -88,6 +93,8 @@ const AddMovieForm = ({ movies, setMovies }) => {
     }
   };
 
+  const navigate = useNavigate();
+
   // Add New Data Movie
   const addMovie = () => {
     const newMovie = {
@@ -98,7 +105,11 @@ const AddMovieForm = ({ movies, setMovies }) => {
       type: genre,
     };
 
-    setMovies([...movies, newMovie]);
+    dispatch(addMovies(newMovie));
+
+    // setMovies([...movies, newMovie]);
+
+    // navigate("/");
   };
 
   // Submit form
@@ -139,7 +150,7 @@ const AddMovieForm = ({ movies, setMovies }) => {
               <label htmlFor="">Date</label>
               <input
                 name="date"
-                type="number"
+                type="date"
                 value={date}
                 onChange={handleChange}
               />

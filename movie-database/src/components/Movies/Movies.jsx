@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
 import { nanoid } from "nanoid";
 
-const Movies = ({ movies, title }) => {
+const Movies = ({ title }) => {
+  const movies = useSelector((state) => state.movies.movies);
+
   return (
     <div className={styles.container}>
       <section className={styles.movies}>

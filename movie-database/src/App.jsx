@@ -17,7 +17,9 @@ import { updateMovies } from "./features/moviesSlice";
 
 const App = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
-  
+
+  console.log(API_KEY);
+
   const URL = `https://api.themoviedb.org/3/trending/movie/day?language=en-US`;
 
   const dispatch = useDispatch();

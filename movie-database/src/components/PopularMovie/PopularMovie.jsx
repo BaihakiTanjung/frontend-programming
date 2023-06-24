@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 function PopularMovie() {
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  const URL = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
 
   const dispatch = useDispatch();
 
@@ -14,9 +14,15 @@ function PopularMovie() {
   }, []);
 
   const getPopularMovies = async () => {
-    const response = await axios(URL);
+    const response = await fetch(URL, {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    });
+    const data = await response.json();
 
-    dispatch(updateMovies(response.data.results));
+    dispatch(updateMovies(data.results));
   };
 
   return (

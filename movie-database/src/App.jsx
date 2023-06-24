@@ -9,16 +9,18 @@ import Counter from "./components/Counter/Counter";
 import theme from "./utils/constants/theme";
 import GlobalStyle from "./components/GlobalStyle";
 import DetailMovie from "./pages/movie/DetailMovie";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
+import { updateMovies } from "./features/moviesSlice";
 
 const App = () => {
-  const API_KEY =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMGE0YTZlYmEyNzhmYjNkYzcyMjA0ZWU3NmFkNjk5ZiIsInN1YiI6IjYyMmI2M2NkZWRhNGI3MDAxODJiYzhmZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UhgRdOiTZ6u2m-E3fLzhoMrobeHAOEV2MSyndar-MOY";
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  
   const URL = `https://api.themoviedb.org/3/trending/movie/day?language=en-US`;
 
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getMovies();
@@ -32,8 +34,8 @@ const App = () => {
       },
     });
     const data = await response.json();
-    setMovies(data.results);
-    console.log(movies);
+
+    dispatch(updateMovies(data.results));
   };
 
   return (
@@ -41,11 +43,8 @@ const App = () => {
       <GlobalStyle />
       <Layout>
         <Routes>
-          <Route path="/" element={<Home movies={movies} />} />
-          <Route
-            path="/movie/create"
-            element={<CreateMovie movies={movies} setMovies={setMovies} />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/create" element={<CreateMovie />} />
           <Route path="/movie/popular" element={<PopularMovie />} />
           <Route path="/movie/now-playing" element={<NowPlayingMovie />} />
           <Route path="/movie/top" element={<TopRatedMovie />} />

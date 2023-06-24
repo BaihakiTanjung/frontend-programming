@@ -5,7 +5,7 @@ import Alert from "../Alert/Alert";
 import Select from "../Select/Select";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addMovies } from "../../features/moviesSlice";
+import { addMovie } from "../../features/moviesSlice";
 
 const AddMovieForm = ({ movies, setMovies }) => {
   const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const AddMovieForm = ({ movies, setMovies }) => {
       type: genre,
     };
 
-    dispatch(addMovies(newMovie));
+    dispatch(addMovie(newMovie));
 
     // setMovies([...movies, newMovie]);
 

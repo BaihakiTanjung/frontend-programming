@@ -11,8 +11,8 @@
 }
 
 .hero__image {
-  max-width: 100%;
-
+  max-width: 500px;
+  max-height: 500px;
   height: auto;
   border-radius: 0.8rem;
 }

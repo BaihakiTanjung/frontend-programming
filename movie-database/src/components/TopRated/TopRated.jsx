@@ -1,14 +1,15 @@
 import axios from "axios";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Movies from "../Movies/Movies";
+import { useDispatch } from "react-redux";
+import { updateMovies } from "../../features/moviesSlice";
 
 function TopRated() {
-  // const API_KEY = process.env.REACT_APP_API_KEY;
-  const API_KEY = "b0a4a6eba278fb3dc72204ee76ad699f";
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 
-  const [TopRateds, setTopRateds] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getTopRateds();
@@ -17,12 +18,12 @@ function TopRated() {
   const getTopRateds = async () => {
     const response = await axios(URL);
 
-    setTopRateds(response.data.results);
+    dispatch(updateMovies(response.data.results));
   };
 
   return (
     <div className="top-rated">
-      <Movies movies={TopRateds} title="Top Rated" />
+      <Movies title="Top Rated" />
     </div>
   );
 }
